@@ -1,0 +1,191 @@
+﻿@page "/"
+@using JornadaAHP.Models
+
+<h1 class="align-content-center">Critérios</h1>
+<RadzenRow class="mb-2" Gap="1rem">
+    <RadzenColumn class="">
+        <RadzenCard>
+            <RadzenLabel Text="Preço"></RadzenLabel>
+            <RadzenRadioButtonList @bind-Value=@preco TValue="int">
+                <Items>
+                    <RadzenRadioButtonListItem Text="1" Value="1" />
+                    <RadzenRadioButtonListItem Text="2" Value="2" />
+                    <RadzenRadioButtonListItem Text="3" Value="3" />
+                    <RadzenRadioButtonListItem Text="4" Value="4" />
+                    <RadzenRadioButtonListItem Text="5" Value="5" />
+                    <RadzenRadioButtonListItem Text="6" Value="6" />
+                    <RadzenRadioButtonListItem Text="7" Value="7" />
+                </Items>
+            </RadzenRadioButtonList>
+        </RadzenCard>
+    </RadzenColumn>
+    <RadzenColumn class="">
+        <RadzenCard>
+            <RadzenLabel Text="Prazo"></RadzenLabel>
+            <RadzenRadioButtonList @bind-Value=@prazo TValue="int">
+                <Items>
+                    <RadzenRadioButtonListItem Text="1" Value="1" />
+                    <RadzenRadioButtonListItem Text="2" Value="2" />
+                    <RadzenRadioButtonListItem Text="3" Value="3" />
+                    <RadzenRadioButtonListItem Text="4" Value="4" />
+                    <RadzenRadioButtonListItem Text="5" Value="5" />
+                    <RadzenRadioButtonListItem Text="6" Value="6" />
+                    <RadzenRadioButtonListItem Text="7" Value="7" />
+                </Items>
+            </RadzenRadioButtonList>
+        </RadzenCard>
+    </RadzenColumn>
+</RadzenRow>
+
+<RadzenRow class="mt-2" Gap="1rem">
+    <RadzenColumn class="">
+        <RadzenCard>
+            <RadzenLabel Text="Velocidade"></RadzenLabel>
+            <RadzenRadioButtonList @bind-Value=@velocidade TValue="int">
+                <Items>
+                    <RadzenRadioButtonListItem Text="1" Value="1" />
+                    <RadzenRadioButtonListItem Text="2" Value="2" />
+                    <RadzenRadioButtonListItem Text="3" Value="3" />
+                    <RadzenRadioButtonListItem Text="4" Value="4" />
+                    <RadzenRadioButtonListItem Text="5" Value="5" />
+                    <RadzenRadioButtonListItem Text="6" Value="6" />
+                    <RadzenRadioButtonListItem Text="7" Value="7" />
+                </Items>
+            </RadzenRadioButtonList>
+        </RadzenCard>
+    </RadzenColumn>
+    <RadzenColumn class="">
+        <RadzenCard>
+            <RadzenLabel Text="Peso"></RadzenLabel>
+            <RadzenRadioButtonList @bind-Value=@peso TValue="int">
+                <Items>
+                    <RadzenRadioButtonListItem Text="1" Value="1" />
+                    <RadzenRadioButtonListItem Text="2" Value="2" />
+                    <RadzenRadioButtonListItem Text="3" Value="3" />
+                    <RadzenRadioButtonListItem Text="4" Value="4" />
+                    <RadzenRadioButtonListItem Text="5" Value="5" />
+                    <RadzenRadioButtonListItem Text="6" Value="6" />
+                    <RadzenRadioButtonListItem Text="7" Value="7" />
+                </Items>
+            </RadzenRadioButtonList>
+        </RadzenCard>
+    </RadzenColumn>
+</RadzenRow>
+
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <RadzenButton Variant="Variant.Flat" Click="@CalcularPesos" Text="Calcular Pesos" ButtonStyle="ButtonStyle.Success" />
+</div>
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <RadzenButton Variant="Variant.Flat" Click="@NormalizarPesos" Text="Calcular Pesos" ButtonStyle="ButtonStyle.Success" />
+</div>
+
+<b>@soma1</b>
+
+@if (matrizComparacao != null)
+{
+    <h2 class="mt-5">Matriz de Comparação</h2>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Critério</th>
+                @foreach (var criterio in criterios)
+                {
+                    <th>@criterio</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < 4; i++)
+            {
+                <tr>
+                    <td>@criterios[i]</td>
+                    @for (int j = 0; j < 4; j++)
+                    {
+                        <td>@matrizComparacao[i, j].ToString("0.00")</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    int preco = 1;
+    int prazo = 1;
+    int velocidade = 1;
+    int peso = 1;
+
+    string[] criterios = { "Preço", "Prazo", "Velocidade", "Peso" };
+
+    double[,] matrizComparacao;
+    double[,] MatrizComparacaoComValores;
+    double soma1;
+    double soma2;
+    double soma3;
+    double soma4;
+
+    public void CalcularPesos()
+    {
+        // Criar a matriz de comparação par a par 4x4
+        matrizComparacao = new double[4, 4]
+        {
+            { 1, preco / (double)prazo, preco / (double)velocidade, preco / (double)peso },
+            { (double)prazo / preco, 1, prazo / (double)velocidade, prazo / (double)peso },
+            { (double)velocidade / preco, (double)velocidade / prazo, 1, velocidade / (double)peso },
+            { (double)peso / preco, (double)peso / prazo, (double)peso / velocidade, 1 }
+        };
+
+    }
+    public void NormalizarPesos()
+    {
+        for (int i = 0; i <= 3; i++)
+        {
+            for (int j = 0; j <= 3; j++)
+            {
+                if (i == 0)
+                {
+                    soma1 += matrizComparacao[j, i];
+                }
+                else if (i == 1)
+                {
+                    soma2 += matrizComparacao[j, i];
+                }
+                else if (i == 2)
+                {
+                    soma3 += matrizComparacao[j, i];
+                }
+                else if (i == 3)
+                {
+                    soma4 += matrizComparacao[j, i];
+                }
+            }
+        };
+    }
+    public void NormalizarPeso2()
+    {
+        MatrizComparacaoComValores = new double[4, 4];
+
+        for (int i = 0; i <= 3; i++)
+        {
+            for (int j = 0; j <= 3; j++)
+            {
+                if (i == 0)
+                {
+                    MatrizComparacaoComValores[j, i] = matrizComparacao[j, i]/soma1;
+                }
+                else if (i == 1)
+                {
+                    MatrizComparacaoComValores[j, i] = matrizComparacao[j, i] / soma2;
+                }
+                else if (i == 2)
+                {
+                    MatrizComparacaoComValores[j, i] = matrizComparacao[j, i] / soma3;
+                }
+                else if (i == 3)
+                {
+                    MatrizComparacaoComValores[j, i] = matrizComparacao[j, i] / soma3;
+                }
+            }
+        };
+    }
+}

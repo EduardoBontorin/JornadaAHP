@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\dev\\JornadaAHP\\JornadaAHP\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\JornadaAHP.bundle.scp.css",
+      "PackagePath": "staticwebassets\\JornadaAHP.1fnw9h4il5.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\dev\\JornadaAHP\\JornadaAHP\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\dev\\JornadaAHP\\JornadaAHP\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\dev\\JornadaAHP\\JornadaAHP\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\dev\\JornadaAHP\\JornadaAHP\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.JornadaAHP.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.JornadaAHP.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.JornadaAHP.props",
+      "PackagePath": "build\\JornadaAHP.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.JornadaAHP.props",
+      "PackagePath": "buildMultiTargeting\\JornadaAHP.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.JornadaAHP.props",
+      "PackagePath": "buildTransitive\\JornadaAHP.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
