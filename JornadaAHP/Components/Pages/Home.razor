@@ -2,6 +2,7 @@
 @using JornadaAHP.Models
 
 <h1 class="align-content-center">Critérios</h1>
+
 <RadzenRow class="mb-2" Gap="1rem">
     <RadzenColumn class="">
         <RadzenCard>
@@ -76,7 +77,13 @@
     <RadzenButton Variant="Variant.Flat" Click="@CalcularPesos" Text="Calcular Pesos" ButtonStyle="ButtonStyle.Success" />
 </div>
 <div class="d-flex justify-content-center align-items-center mt-5">
-    <RadzenButton Variant="Variant.Flat" Click="@NormalizarPesos" Text="Calcular Pesos" ButtonStyle="ButtonStyle.Success" />
+    <RadzenButton Variant="Variant.Flat" Click="@NormalizarPesos" Text="Normalizar Pesos" ButtonStyle="ButtonStyle.Success" />
+</div>
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <RadzenButton Variant="Variant.Flat" Click="@NormalizarPeso2" Text="Calcular Pesos Normalizados" ButtonStyle="ButtonStyle.Success" />
+</div>
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <RadzenButton Variant="Variant.Flat" Click="@CalcularMelhorMotor" Text="Calcular melhor motor" ButtonStyle="ButtonStyle.Success" />
 </div>
 
 <b>@soma1</b>
@@ -108,12 +115,41 @@
         </tbody>
     </table>
 }
+@if (MatrizComparacaoComValores != null)
+{
+    <h2 class="mt-5">Matriz de Comparação normalizada</h2>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Critério</th>
+                @foreach (var criterio in criterios)
+                {
+                    <th>@criterio</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < 4; i++)
+            {
+                <tr>
+                    <td>@criterios[i]</td>
+                    @for (int j = 0; j < 4; j++)
+                    {
+                        <td>@MatrizComparacaoComValores[i, j].ToString("0.00")</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
 
 @code {
     int preco = 1;
     int prazo = 1;
     int velocidade = 1;
     int peso = 1;
+    List<Motor> motoresComPeso = new List<Motor>();
 
     string[] criterios = { "Preço", "Prazo", "Velocidade", "Peso" };
 
@@ -126,7 +162,6 @@
 
     public void CalcularPesos()
     {
-        // Criar a matriz de comparação par a par 4x4
         matrizComparacao = new double[4, 4]
         {
             { 1, preco / (double)prazo, preco / (double)velocidade, preco / (double)peso },
@@ -134,58 +169,90 @@
             { (double)velocidade / preco, (double)velocidade / prazo, 1, velocidade / (double)peso },
             { (double)peso / preco, (double)peso / prazo, (double)peso / velocidade, 1 }
         };
-
     }
+
     public void NormalizarPesos()
     {
+        soma1 = soma2 = soma3 = soma4 = 0;
         for (int i = 0; i <= 3; i++)
         {
             for (int j = 0; j <= 3; j++)
             {
-                if (i == 0)
-                {
-                    soma1 += matrizComparacao[j, i];
-                }
-                else if (i == 1)
-                {
-                    soma2 += matrizComparacao[j, i];
-                }
-                else if (i == 2)
-                {
-                    soma3 += matrizComparacao[j, i];
-                }
-                else if (i == 3)
-                {
-                    soma4 += matrizComparacao[j, i];
-                }
+                if (i == 0) soma1 += matrizComparacao[j, i];
+                else if (i == 1) soma2 += matrizComparacao[j, i];
+                else if (i == 2) soma3 += matrizComparacao[j, i];
+                else if (i == 3) soma4 += matrizComparacao[j, i];
             }
-        };
+        }
     }
+
     public void NormalizarPeso2()
     {
         MatrizComparacaoComValores = new double[4, 4];
-
         for (int i = 0; i <= 3; i++)
         {
             for (int j = 0; j <= 3; j++)
             {
                 if (i == 0)
-                {
-                    MatrizComparacaoComValores[j, i] = matrizComparacao[j, i]/soma1;
-                }
+                    MatrizComparacaoComValores[j, i] = matrizComparacao[j, i] / soma1;
                 else if (i == 1)
-                {
                     MatrizComparacaoComValores[j, i] = matrizComparacao[j, i] / soma2;
-                }
                 else if (i == 2)
-                {
                     MatrizComparacaoComValores[j, i] = matrizComparacao[j, i] / soma3;
-                }
                 else if (i == 3)
-                {
-                    MatrizComparacaoComValores[j, i] = matrizComparacao[j, i] / soma3;
-                }
+                    MatrizComparacaoComValores[j, i] = matrizComparacao[j, i] / soma4;
             }
-        };
+        }
+    }
+
+    List<Motor> motores = new List<Motor>
+    {
+        new Motor { Nome = "Motor A", Preco = 1500, Prazo = 1, Velocidade = 3000, Peso = 50 },
+        new Motor { Nome = "Motor B", Preco = 2000, Prazo = 3, Velocidade = 3500, Peso = 40 },
+        new Motor { Nome = "Motor C", Preco = 1800, Prazo = 5, Velocidade = 3200, Peso = 55 },
+        new Motor { Nome = "Motor D", Preco = 2200, Prazo = 7, Velocidade = 4000, Peso = 35 },
+    };
+
+    // Função de normalização para os critérios de Preço, Prazo, Velocidade e Peso
+    public int DefinirPeso(decimal valor, decimal min, decimal max)
+    {
+        if (valor == min) return 1;
+        if (valor == max) return 7;
+        return (int)Math.Round(((valor - min) / (max - min)) * 5 + 1);
+    }
+
+    public void CalcularMelhorMotor()
+    {
+        decimal precoMin = motores.Min(m => m.Preco);
+        decimal precoMax = motores.Max(m => m.Preco);
+
+        int prazoMin = motores.Min(m => m.Prazo);
+        int prazoMax = motores.Max(m => m.Prazo);
+
+        int velocidadeMin = motores.Min(m => m.Velocidade);
+        int velocidadeMax = motores.Max(m => m.Velocidade);
+
+        int pesoMin = motores.Min(m => m.Peso);
+        int pesoMax = motores.Max(m => m.Peso);
+
+        var pontuacoes = new List<Tuple<Motor, int>>();
+
+        foreach (var motor in motores)
+        {
+            motor.PesoEscala = DefinirPeso(motor.Preco, precoMin, precoMax);
+            motor.PrazoEscala = DefinirPeso(motor.Prazo, prazoMin, prazoMax);
+            motor.Velocidade = DefinirPeso(motor.Velocidade, velocidadeMin,velocidadeMax);
+            motor.PesoEscala = DefinirPeso(motor.Peso, pesoMin, pesoMax);
+
+            //pontuacoes.Add(Tuple.Create(motor, pontuacao));
+
+            motoresComPeso.Add(motor);
+        }
+        foreach(var motor in motoresComPeso)
+        {
+            motor.Pontuacao = (motor.PrecoEscala*)
+        }
+        var melhorMotor = pontuacoes.OrderByDescending(p => p.Item2).First().Item1;
+        Console.WriteLine($"O melhor motor é: {melhorMotor.Nome}");
     }
 }

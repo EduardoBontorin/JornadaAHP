@@ -34,3 +34,4 @@ C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\Radzen.Blazor.dll
 C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\System.Linq.Dynamic.Core.dll
 C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\JornadaAHP.csproj.AssemblyReference.cache
 C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\JornadaAHP.csproj.Up2Date
+C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\JornadaAHP.sourcelink.json
