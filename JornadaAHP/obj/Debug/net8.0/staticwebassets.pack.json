@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\dev\\JornadaAHP\\JornadaAHP\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\JornadaAHP.bundle.scp.css",
-      "PackagePath": "staticwebassets\\JornadaAHP.1fnw9h4il5.bundle.scp.css"
+      "PackagePath": "staticwebassets\\JornadaAHP.bundle.scp.css"
     },
     {
       "Id": "C:\\dev\\JornadaAHP\\JornadaAHP\\wwwroot\\app.css",
@@ -19,10 +19,6 @@
     {
       "Id": "C:\\dev\\JornadaAHP\\JornadaAHP\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
-    },
-    {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.JornadaAHP.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
-      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.JornadaAHP.Microsoft.AspNetCore.StaticWebAssets.props",

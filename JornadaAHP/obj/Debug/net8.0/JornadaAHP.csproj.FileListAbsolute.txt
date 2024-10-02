@@ -1,7 +1,6 @@
 C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\appsettings.Development.json
 C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\appsettings.json
 C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\JornadaAHP.staticwebassets.runtime.json
-C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\JornadaAHP.staticwebassets.endpoints.json
 C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\JornadaAHP.exe
 C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\JornadaAHP.deps.json
 C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\JornadaAHP.runtimeconfig.json
@@ -18,9 +17,7 @@ C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\scopedcss\bundle\JornadaAHP.styles
 C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\scopedcss\projectbundle\JornadaAHP.bundle.scp.css
 C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\staticwebassets.build.json
 C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\staticwebassets.development.json
-C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\staticwebassets\msbuild.JornadaAHP.Microsoft.AspNetCore.StaticWebAssets.props
-C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\staticwebassets\msbuild.JornadaAHP.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\staticwebassets\msbuild.build.JornadaAHP.props
 C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.JornadaAHP.props
 C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.JornadaAHP.props
