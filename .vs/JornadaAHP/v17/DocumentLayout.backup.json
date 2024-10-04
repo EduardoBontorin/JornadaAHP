@@ -46,8 +46,7 @@
               "RelativeToolTip": "JornadaAHP\\Models\\Motor.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T20:57:09.948Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-27T20:57:09.948Z"
             },
             {
               "$type": "Document",
@@ -81,7 +80,7 @@
               "RelativeDocumentMoniker": "JornadaAHP\\Components\\Pages\\Home.razor",
               "ToolTip": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Pages\\Home.razor*",
               "RelativeToolTip": "JornadaAHP\\Components\\Pages\\Home.razor*",
-              "ViewState": "AgIAAM0AAAAAAAAAAAAiwN8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAAK0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-09-27T19:57:47.772Z",
               "EditorCaption": ""
@@ -96,8 +95,7 @@
               "RelativeToolTip": "JornadaAHP\\Components\\App.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAIwA0AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-27T19:54:34.804Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-27T19:54:34.804Z"
             },
             {
               "$type": "Document",
@@ -109,8 +107,7 @@
               "RelativeToolTip": "JornadaAHP\\Components\\_Imports.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-27T19:54:22.68Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-27T19:54:22.68Z"
             }
           ]
         }
