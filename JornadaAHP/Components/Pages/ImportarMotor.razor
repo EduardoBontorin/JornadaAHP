@@ -1,0 +1,80 @@
+﻿@page "/importarMotor"
+@using JornadaAHP.Data
+@using JornadaAHP.Enums
+@using JornadaAHP.Models
+@using System.Globalization
+@using JornadaAHP.Services
+@using Microsoft.EntityFrameworkCore
+@using OfficeOpenXml
+@inject ExcelReaderService ExcelService
+
+
+<h3>Importar Motor</h3>
+
+<RadzenCard Variant="Variant.Outlined">
+    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Enviar Arquivo BD</RadzenText>
+    <RadzenUpload Change="@(async (args) => await OnUploadChange(args))" ChooseText="Enviar Motores" Style="width: 100%" InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Enviar Arquivo" }})">
+    </RadzenUpload>
+</RadzenCard>
+<style>
+    #ddUpload {
+        left: 0;
+        --rz-upload-button-bar-background-color: transparent;
+        --rz-upload-button-bar-padding: 0;
+    }
+
+        #ddUpload .rz-fileupload-buttonbar .rz-fileupload-choose {
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            padding: 100px 0;
+        }
+</style>
+
+@code {
+    private List<Motor> motores = new List<Motor>();
+
+  
+    public async Task OnUploadChange(UploadChangeEventArgs args)
+    {
+        if (args.Files != null && args.Files.Any())
+        {
+            var file = args.Files.FirstOrDefault();
+            if (file != null)
+            {
+                try
+                {
+                    using var stream = file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024); // Max file size set to 10MB
+
+                    // Salve o arquivo temporariamente
+                    var tempFilePath = Path.Combine(Path.GetTempPath(), file.Name);
+                    using (var fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
+                    {
+                        await stream.CopyToAsync(fileStream);
+                    }
+
+                    // Passar o caminho do arquivo para o serviço de leitura do Excel
+                    motores = await ExcelService.LerMotoresDoArquivo(tempFilePath);
+
+                    // Apagar o arquivo temporário depois de processá-lo
+                    File.Delete(tempFilePath);
+
+                    StateHasChanged(); // Atualizar a interface com os novos dados
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro ao ler o arquivo carregado: {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("O arquivo está nulo.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Nenhum arquivo selecionado.");
+        }
+    }
+}
+

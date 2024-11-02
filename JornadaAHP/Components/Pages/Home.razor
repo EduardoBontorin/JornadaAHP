@@ -1,5 +1,7 @@
 ﻿@page "/"
+@using JornadaAHP.Data
 @using JornadaAHP.Models
+@inject AppDbContext _context;
 
 <h1 class="align-content-center">Critérios</h1>
 
@@ -126,16 +128,9 @@
     double soma3;
     double soma4;
 
-    List<Motor> motores = new List<Motor>
-    {
-        new Motor { Nome = "Motor A", Preco = 1500, Prazo = 1, Velocidade = 3000, Peso = 50 },
-        new Motor { Nome = "Motor B", Preco = 2000, Prazo = 3, Velocidade = 3500, Peso = 40 },
-        new Motor { Nome = "Motor C", Preco = 1800, Prazo = 5, Velocidade = 3200, Peso = 55 },
-        new Motor { Nome = "Motor D", Preco = 2200, Prazo = 7, Velocidade = 4000, Peso = 35 },
-        new Motor { Nome = "Motor E", Preco = 1600, Prazo = 4, Velocidade = 3100, Peso = 45 },
-        new Motor { Nome = "Motor F", Preco = 2300, Prazo = 6, Velocidade = 3700, Peso = 42 },
-        new Motor { Nome = "Motor G", Preco = 1300, Prazo = 6, Velocidade = 3000, Peso = 50 }
-    };
+    List<Motor> motores = new List<Motor>();
+    motores = _context.Motores.ToList();
+
 
     public void CalcularPesos()
     {
@@ -167,15 +162,15 @@
 
     public int DefinirPeso(decimal valor, decimal min, decimal max, bool inverso = false)
     {
-        if (min == max) return 1; // 
+        if (min == max) return 1; //
         if (inverso)
         {
-            
+
             return (int)Math.Round((1 - ((valor - min) / (max - min))) * 6 + 1);
         }
         else
         {
-            
+
             return (int)Math.Round(((valor - min) / (max - min)) * 6 + 1);
         }
     }

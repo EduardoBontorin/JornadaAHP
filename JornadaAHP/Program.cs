@@ -1,10 +1,19 @@
 using JornadaAHP.Components;
+using JornadaAHP.Data;
+using JornadaAHP.Services;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddTransient<ExcelReaderService>();
+var connString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<AppDbContext>(options =>
+options.UseSqlServer(connString)
+);
 
 var app = builder.Build();
 

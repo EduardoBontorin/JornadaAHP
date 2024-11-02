@@ -1,0 +1,42 @@
+﻿@page "/ListarMotores"
+@using JornadaAHP.Data
+@using JornadaAHP.Models
+@inject AppDbContext _context;
+
+<h3>Listar Motores</h3>
+
+
+@if (motores != null && motores.Any())
+{
+    <RadzenDataGrid TItem="Motor" Data="@motores" ColumnWidth="200px" Class="mt-4">
+        <Columns>
+            <RadzenDataGridColumn TItem="Motor" Property="Empresa" Title="Empresa" />
+            <RadzenDataGridColumn TItem="Motor" Property="Categoria" Title="Categoria" />
+            <RadzenDataGridColumn TItem="Motor" Property="PartNumber" Title="Part Number" />
+            <RadzenDataGridColumn TItem="Motor" Property="ForcaMaxima" Title="Força Máxima (Nm)" />
+            <RadzenDataGridColumn TItem="Motor" Property="Peso" Title="Peso (G)" />
+            <RadzenDataGridColumn TItem="Motor" Property="RpmMaximo" Title="RPM Máximo" />
+            <RadzenDataGridColumn TItem="Motor" Property="Prazo" Title="Prazo (Dias)" />
+            <RadzenDataGridColumn TItem="Motor" Property="Valor" Title="Valor (R$)" />
+            <RadzenDataGridColumn TItem="Motor" Property="ValorTotal" Title="Valor Total (R$)" />
+            <RadzenDataGridColumn TItem="Motor" Property="Drive.PartNumber" Title="Drive Part Number" />
+            <RadzenDataGridColumn TItem="Motor" Property="Drive.Preco" Title="Preço Drive (R$)" />
+            <RadzenDataGridColumn TItem="Motor" Property="Fonte.PartNumber" Title="Fonte Part Number" />
+            <RadzenDataGridColumn TItem="Motor" Property="Fonte.Preco" Title="Preço Fonte (R$)" />
+        </Columns>
+    </RadzenDataGrid>
+}
+else
+{
+    <p class="text-center mt-3">Nenhum motor encontrado.</p>
+}
+
+
+@code {
+    private List<Motor> motores = new List<Motor>();
+
+    protected override void OnInitialized()
+    {
+        motores = _context.Motores.ToList();
+    }
+}
