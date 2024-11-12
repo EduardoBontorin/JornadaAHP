@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\dev\\JornadaAHP\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|c:\\dev\\jornadaahp\\jornadaahp\\migrations\\20241112003756_novamigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|solutionrelative:jornadaahp\\migrations\\20241112003756_novamigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|c:\\dev\\jornadaahp\\jornadaahp\\models\\motor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|solutionrelative:jornadaahp\\models\\motor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|c:\\dev\\jornadaahp\\jornadaahp\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|solutionrelative:jornadaahp\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -11,12 +19,8 @@
       "RelativeMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|solutionrelative:jornadaahp\\components\\pages\\listarmotores.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|c:\\dev\\jornadaahp\\jornadaahp\\components\\pages\\importarmotor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|solutionrelative:jornadaahp\\components\\pages\\importarmotor.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|c:\\dev\\jornadaahp\\jornadaahp\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|solutionrelative:jornadaahp\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|c:\\dev\\jornadaahp\\jornadaahp\\data\\motormapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B6555A4-CAB3-4143-9DBB-2E09BCA1E96C}|JornadaAHP\\JornadaAHP.csproj|solutionrelative:jornadaahp\\data\\motormapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,53 +35,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Home.razor",
-              "DocumentMoniker": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Pages\\Home.razor",
-              "RelativeDocumentMoniker": "JornadaAHP\\Components\\Pages\\Home.razor",
-              "ToolTip": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Pages\\Home.razor",
-              "RelativeToolTip": "JornadaAHP\\Components\\Pages\\Home.razor",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAAAAgAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-02T00:41:49.203Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ImportarMotor.razor",
-              "DocumentMoniker": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Pages\\ImportarMotor.razor",
-              "RelativeDocumentMoniker": "JornadaAHP\\Components\\Pages\\ImportarMotor.razor",
-              "ToolTip": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Pages\\ImportarMotor.razor",
-              "RelativeToolTip": "JornadaAHP\\Components\\Pages\\ImportarMotor.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-02T00:40:54.349Z",
+              "Title": "20241112003756_NovaMigration.cs",
+              "DocumentMoniker": "C:\\dev\\JornadaAHP\\JornadaAHP\\Migrations\\20241112003756_NovaMigration.cs",
+              "RelativeDocumentMoniker": "JornadaAHP\\Migrations\\20241112003756_NovaMigration.cs",
+              "ToolTip": "C:\\dev\\JornadaAHP\\JornadaAHP\\Migrations\\20241112003756_NovaMigration.cs",
+              "RelativeToolTip": "JornadaAHP\\Migrations\\20241112003756_NovaMigration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:37:56.87Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ListarMotores.razor",
-              "DocumentMoniker": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Pages\\ListarMotores.razor",
-              "RelativeDocumentMoniker": "JornadaAHP\\Components\\Pages\\ListarMotores.razor",
-              "ToolTip": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Pages\\ListarMotores.razor",
-              "RelativeToolTip": "JornadaAHP\\Components\\Pages\\ListarMotores.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAALAAAAAAAAAA==",
+              "Title": "Motor.cs",
+              "DocumentMoniker": "C:\\dev\\JornadaAHP\\JornadaAHP\\Models\\Motor.cs",
+              "RelativeDocumentMoniker": "JornadaAHP\\Models\\Motor.cs",
+              "ToolTip": "C:\\dev\\JornadaAHP\\JornadaAHP\\Models\\Motor.cs",
+              "RelativeToolTip": "JornadaAHP\\Models\\Motor.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAUwBcAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:35:14.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "JornadaAHP\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "JornadaAHP\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAG4AAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-02T00:40:43.925Z",
+              "WhenOpened": "2024-11-12T00:28:20.316Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "JornadaAHP\\Components\\Layout\\NavMenu.razor",
-              "ToolTip": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "JornadaAHP\\Components\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAWAAAAAAAAAA==",
+              "Title": "ListarMotores.razor",
+              "DocumentMoniker": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Pages\\ListarMotores.razor",
+              "RelativeDocumentMoniker": "JornadaAHP\\Components\\Pages\\ListarMotores.razor",
+              "ToolTip": "C:\\dev\\JornadaAHP\\JornadaAHP\\Components\\Pages\\ListarMotores.razor",
+              "RelativeToolTip": "JornadaAHP\\Components\\Pages\\ListarMotores.razor",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-02T00:39:12.782Z",
+              "WhenOpened": "2024-11-12T00:27:46.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MotorMapping.cs",
+              "DocumentMoniker": "C:\\dev\\JornadaAHP\\JornadaAHP\\Data\\MotorMapping.cs",
+              "RelativeDocumentMoniker": "JornadaAHP\\Data\\MotorMapping.cs",
+              "ToolTip": "C:\\dev\\JornadaAHP\\JornadaAHP\\Data\\MotorMapping.cs",
+              "RelativeToolTip": "JornadaAHP\\Data\\MotorMapping.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:04:23.81Z",
               "EditorCaption": ""
             }
           ]

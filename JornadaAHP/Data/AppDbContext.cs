@@ -14,6 +14,7 @@ namespace JornadaAHP.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Entity<Pontuacao>().HasNoKey();
         }
     }
 }

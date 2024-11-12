@@ -1,4 +1,5 @@
 ﻿using JornadaAHP.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JornadaAHP.Models
 {
@@ -19,6 +20,10 @@ namespace JornadaAHP.Models
         public int FonteId { get; set; }
         public Drive? Drive { get; set; }
         public int DriveId { get; set; }
-        public decimal? ValorTotal { get; set; }
+        public decimal Pontuacao { get; set; }
+        public decimal ValorTotal { get; set; } = 0;
+        [NotMapped]
+        public List<Pontuacao>? Pontuacoes { get; set; }
+
     }
 }

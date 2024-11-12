@@ -1,15 +1,55 @@
 ﻿@page "/"
 @using JornadaAHP.Data
 @using JornadaAHP.Models
-@inject AppDbContext _context;
+@using Microsoft.EntityFrameworkCore
+@inject AppDbContext context
 
 <h1 class="align-content-center">Critérios</h1>
 
+<!-- Campo para inserir o valor da força desejada -->
+<div class="mb-3">
+    <RadzenLabel Text="Valor da Força Desejada:" />
+    <RadzenNumeric @bind-Value="valorForcaDesejada" Min="0" />
+</div>
+
+<!-- Critérios de avaliação -->
 <RadzenRow class="mb-2" Gap="1rem">
     <RadzenColumn class="">
         <RadzenCard>
             <RadzenLabel Text="Preço"></RadzenLabel>
-            <RadzenRadioButtonList @bind-Value=@preco TValue="int">
+            <RadzenRadioButtonList @bind-Value="@preco" TValue="int">
+                <Items>
+                    <RadzenRadioButtonListItem Text="1" Value="1" />
+                    <RadzenRadioButtonListItem Text="2" Value="2" />
+                    <RadzenRadioButtonListItem Text="3" Value="3" />
+                    <RadzenRadioButtonListItem Text="4" Value="4" />
+                    <RadzenRadioButtonListItem Text="5" Value="5" />
+                    <RadzenRadioButtonListItem Text="6" Value="6" />
+                    <RadzenRadioButtonListItem Text="7" Value="7" />
+                </Items>
+            </RadzenRadioButtonList>
+        </RadzenCard>
+    </RadzenColumn>
+    <RadzenColumn class="">
+        <RadzenCard>
+            <RadzenLabel Text="Velocidade"></RadzenLabel>
+            <RadzenRadioButtonList @bind-Value="@velocidade" TValue="int">
+                <Items>
+                    <RadzenRadioButtonListItem Text="1" Value="1" />
+                    <RadzenRadioButtonListItem Text="2" Value="2" />
+                    <RadzenRadioButtonListItem Text="3" Value="3" />
+                    <RadzenRadioButtonListItem Text="4" Value="4" />
+                    <RadzenRadioButtonListItem Text="5" Value="5" />
+                    <RadzenRadioButtonListItem Text="6" Value="6" />
+                    <RadzenRadioButtonListItem Text="7" Value="7" />
+                </Items>
+            </RadzenRadioButtonList>
+        </RadzenCard>
+    </RadzenColumn>
+    <RadzenColumn class="">
+        <RadzenCard>
+            <RadzenLabel Text="Força"></RadzenLabel>
+            <RadzenRadioButtonList @bind-Value="@forca" TValue="int">
                 <Items>
                     <RadzenRadioButtonListItem Text="1" Value="1" />
                     <RadzenRadioButtonListItem Text="2" Value="2" />
@@ -25,42 +65,7 @@
     <RadzenColumn class="">
         <RadzenCard>
             <RadzenLabel Text="Prazo"></RadzenLabel>
-            <RadzenRadioButtonList @bind-Value=@prazo TValue="int">
-                <Items>
-                    <RadzenRadioButtonListItem Text="1" Value="1" />
-                    <RadzenRadioButtonListItem Text="2" Value="2" />
-                    <RadzenRadioButtonListItem Text="3" Value="3" />
-                    <RadzenRadioButtonListItem Text="4" Value="4" />
-                    <RadzenRadioButtonListItem Text="5" Value="5" />
-                    <RadzenRadioButtonListItem Text="6" Value="6" />
-                    <RadzenRadioButtonListItem Text="7" Value="7" />
-                </Items>
-            </RadzenRadioButtonList>
-        </RadzenCard>
-    </RadzenColumn>
-</RadzenRow>
-
-<RadzenRow class="mt-2" Gap="1rem">
-    <RadzenColumn class="">
-        <RadzenCard>
-            <RadzenLabel Text="Velocidade"></RadzenLabel>
-            <RadzenRadioButtonList @bind-Value=@velocidade TValue="int">
-                <Items>
-                    <RadzenRadioButtonListItem Text="1" Value="1" />
-                    <RadzenRadioButtonListItem Text="2" Value="2" />
-                    <RadzenRadioButtonListItem Text="3" Value="3" />
-                    <RadzenRadioButtonListItem Text="4" Value="4" />
-                    <RadzenRadioButtonListItem Text="5" Value="5" />
-                    <RadzenRadioButtonListItem Text="6" Value="6" />
-                    <RadzenRadioButtonListItem Text="7" Value="7" />
-                </Items>
-            </RadzenRadioButtonList>
-        </RadzenCard>
-    </RadzenColumn>
-    <RadzenColumn class="">
-        <RadzenCard>
-            <RadzenLabel Text="Peso"></RadzenLabel>
-            <RadzenRadioButtonList @bind-Value=@peso TValue="int">
+            <RadzenRadioButtonList @bind-Value="@prazo" TValue="int">
                 <Items>
                     <RadzenRadioButtonListItem Text="1" Value="1" />
                     <RadzenRadioButtonListItem Text="2" Value="2" />
@@ -81,135 +86,129 @@
 
 @if (MotoresComPontuacao != null && MotoresComPontuacao.Any())
 {
-    <h2 class="mt-5">Lista de Motores Ordenada pela Pontuação</h2>
-    <table class="table table-bordered mt-3">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Preço</th>
-                <th>Prazo</th>
-                <th>Velocidade</th>
-                <th>Peso</th>
-                <th>Pontuação</th>
-            </tr>
-        </thead>
-        <tbody>
+        <h2 class="mt-5">Lista de Motores Ordenada pela Pontuação</h2>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Força Maxima</th>
+                    <th>Força Média</th>
+                    <th>Peso</th>
+                    <th>RPM Máximo</th>
+                    <th>Prazo</th>
+                    <th>Valor</th>
+                    <th>Pontuação</th>
+                </tr>
+            </thead>
+            <tbody>
             @foreach (var motor in MotoresComPontuacao.OrderByDescending(x => x.Pontuacao))
             {
-                <tr>
-                    <td>@motor.Nome</td>
-                    <td>@motor.Preco</td>
-                    <td>@motor.Prazo</td>
-                    <td>@motor.Velocidade</td>
-                    <td>@motor.Peso</td>
-                    <td>@motor.Pontuacao.ToString("0.00")</td>
-                </tr>
+                        <tr>
+                            <td>@motor.PartNumber</td>
+                            <td>@motor.Categoria</td>
+                            <td>@motor.ForcaMaxima</td>
+                            <td>@motor.ForcaMedia</td>
+                            <td>@motor.Peso</td>
+                            <td>@motor.RpmMaximo</td>
+                            <td>@motor.Prazo</td>
+                            <td>@motor.Valor.ToString("0.00")</td>
+                            <td>@motor.Pontuacao</td>
+                        </tr>
             }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+}
+else
+{
+        <p>Nenhum motor encontrado com os critérios especificados.</p>
 }
 
 @code {
     int preco = 1;
-    int prazo = 1;
     int velocidade = 1;
-    int peso = 1;
-    List<Motor> motoresComPeso = new List<Motor>();
+    int forca = 1;
+    int prazo = 1;
+
+    decimal valorForcaDesejada = 0;
+
     List<Motor> MotoresComPontuacao = new List<Motor>();
-
-    string[] criterios = { "Preço", "Prazo", "Velocidade", "Peso" };
-
-    double[,] matrizComparacao;
-    double[,] MatrizComparacaoComValores;
-    double?[,] MatrizPesoMotor = new double?[4, 4];
-    double[,] VetorDePrioridades = new double[1, 4];
-    double soma1;
-    double soma2;
-    double soma3;
-    double soma4;
-
     List<Motor> motores = new List<Motor>();
-    motores = _context.Motores.ToList();
 
+    protected override async Task OnInitializedAsync()
+    {
+        motores = await context.Motores.ToListAsync();
+    }
 
     public void CalcularPesos()
     {
-        matrizComparacao = new double[4, 4]
-        {
-            { 1, preco / (double)prazo, preco / (double)velocidade, preco / (double)peso },
-            { (double)prazo / preco, 1, prazo / (double)velocidade, prazo / (double)peso },
-            { (double)velocidade / preco, (double)velocidade / prazo, 1, velocidade / (double)peso },
-            { (double)peso / preco, (double)peso / prazo, (double)peso / velocidade, 1 }
-        };
-        NormalizarPesos();
-    }
+        // Filtrar motores com base no valor da força desejada
+        decimal valorForcaMaxima = valorForcaDesejada * 1.5m; // 50% acima do valor desejado
 
-    public void NormalizarPesos()
-    {
-        soma1 = soma2 = soma3 = soma4 = 0;
-        for (int i = 0; i <= 3; i++)
+        var motoresFiltrados = motores.Where(m =>
+            m.ForcaMaxima >= valorForcaDesejada &&
+            m.ForcaMaxima <= valorForcaMaxima).ToList();
+
+        if (!motoresFiltrados.Any())
         {
-            for (int j = 0; j <= 3; j++)
-            {
-                if (i == 0) soma1 += matrizComparacao[j, i];
-                else if (i == 1) soma2 += matrizComparacao[j, i];
-                else if (i == 2) soma3 += matrizComparacao[j, i];
-                else if (i == 3) soma4 += matrizComparacao[j, i];
-            }
+            MotoresComPontuacao.Clear();
+            return;
         }
-        CalcularMelhorMotor();
+
+        // Definir pesos relativos aos critérios com base nos motores filtrados
+        decimal precoMin = motoresFiltrados.Min(m => m.Valor);
+        decimal precoMax = motoresFiltrados.Max(m => m.Valor);
+        int prazoMin = motoresFiltrados.Min(m => m.Prazo);
+        int prazoMax = motoresFiltrados.Max(m => m.Prazo);
+        int velocidadeMin = motoresFiltrados.Min(m => m.RpmMedio);
+        int velocidadeMax = motoresFiltrados.Max(m => m.RpmMedio);
+        decimal forcaMin = motoresFiltrados.Min(m => m.ForcaMedia);
+        decimal forcaMax = motoresFiltrados.Max(m => m.ForcaMedia);
+
+        MotoresComPontuacao.Clear();
+
+        foreach (var motor in motoresFiltrados)
+        {
+            motor.Pontuacoes = new List<Pontuacao>();
+
+            // Calcula a pontuação de cada critério
+            motor.Pontuacoes.Add(new Pontuacao
+                {
+                    Titulo = "Preço",
+                    Pontos = DefinirPeso(motor.Valor, precoMin, precoMax, inverso: true) * preco
+                });
+            motor.Pontuacoes.Add(new Pontuacao
+                {
+                    Titulo = "Velocidade",
+                    Pontos = DefinirPeso(motor.RpmMedio, velocidadeMin, velocidadeMax) * velocidade
+                });
+            motor.Pontuacoes.Add(new Pontuacao
+                {
+                    Titulo = "Força",
+                    Pontos = DefinirPeso(motor.ForcaMedia, forcaMin, forcaMax) * forca
+                });
+            motor.Pontuacoes.Add(new Pontuacao
+                {
+                    Titulo = "Prazo",
+                    Pontos = DefinirPeso(motor.Prazo, prazoMin, prazoMax, inverso: true) * prazo
+                });
+
+            // Calcula a pontuação total do motor
+            motor.Pontuacao = motor.Pontuacoes.Sum(p => p.Pontos);
+            MotoresComPontuacao.Add(motor);
+        }
     }
 
     public int DefinirPeso(decimal valor, decimal min, decimal max, bool inverso = false)
     {
-        if (min == max) return 1; //
+        if (min == max) return 1;
         if (inverso)
         {
-
             return (int)Math.Round((1 - ((valor - min) / (max - min))) * 6 + 1);
         }
         else
         {
-
             return (int)Math.Round(((valor - min) / (max - min)) * 6 + 1);
-        }
-    }
-
-    public void CalcularMelhorMotor()
-    {
-        decimal precoMin = motores.Min(m => m.Preco);
-        decimal precoMax = motores.Max(m => m.Preco);
-
-        int prazoMin = motores.Min(m => m.Prazo);
-        int prazoMax = motores.Max(m => m.Prazo);
-
-        int velocidadeMin = motores.Min(m => m.Velocidade);
-        int velocidadeMax = motores.Max(m => m.Velocidade);
-
-        int pesoMin = motores.Min(m => m.Peso);
-        int pesoMax = motores.Max(m => m.Peso);
-
-        motoresComPeso.Clear();
-        MotoresComPontuacao.Clear();
-
-        foreach (var motor in motores)
-        {
-            motor.PrecoEscala = DefinirPeso(motor.Preco, precoMin, precoMax, inverso: true);
-            motor.PrazoEscala = DefinirPeso(motor.Prazo, prazoMin, prazoMax, inverso: true);
-            motor.VelocidadeEscala = DefinirPeso(motor.Velocidade, velocidadeMin, velocidadeMax);
-            motor.PesoEscala = DefinirPeso(motor.Peso, pesoMin, pesoMax, inverso: true);
-
-            motoresComPeso.Add(motor);
-        }
-
-        foreach (var motor in motoresComPeso)
-        {
-            motor.Pontuacao = (motor.PrecoEscala * preco) +
-                              (motor.PrazoEscala * prazo) +
-                              (motor.VelocidadeEscala * velocidade) +
-                              (motor.PesoEscala * peso);
-
-            MotoresComPontuacao.Add(motor);
         }
     }
 }
