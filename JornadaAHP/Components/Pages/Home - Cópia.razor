@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/teste"
 @using JornadaAHP.Data
 @using JornadaAHP.Models
 @using Microsoft.EntityFrameworkCore
@@ -7,15 +7,14 @@
 <h1 class="align-content-center">Critérios</h1>
 
 <!-- Campo para inserir o valor da força desejada -->
-<RadzenLabel Text="Comprimento da Haste (cm)" />
-<RadzenNumeric @bind-Value="comprimentoHasteCm" Min="0"   />
-
-<RadzenLabel Text="Valor da Massa (g)" />
-<RadzenNumeric @bind-Value="massaGramas" Min="0"/>
-
-<div class="mt-3">
-    <RadzenLabel Text="Torque mínimo necessário (Nm):" />
-    <RadzenNumeric Value="torqueNecessario" Disabled="true" />
+<div class="mb-3">
+    @* <RadzenLabel @onchange="calcularMassa()" Text="Comprimento da Haste" /> *@
+    <RadzenNumeric @bind-Value="distancia" Min="0" />
+    <RadzenLabel Text="Valor da massa" />
+    <RadzenNumeric @bind-Value="massa" Min="0" />
+</div><div class="mb-3">
+    <RadzenLabel Text="Valor da massa" />
+    <RadzenNumeric Disabled="true" @bind-Value="valorForcaDesejada" Min="0" />
 </div>
 
 <!-- Critérios de avaliação -->
@@ -86,56 +85,171 @@
     </RadzenColumn>
 </RadzenRow>
 
+<!-- Matriz de Comparação dos Critérios -->
+<h2 class="mt-5">Matriz de Comparação dos Critérios</h2>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Critério</th>
+            <th>Preço</th>
+            <th>Velocidade</th>
+            <th>Força</th>
+            <th>Prazo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Preço</td>
+            <td>@(VetorDeCriterios[0, 0].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[0, 1].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[0, 2].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[0, 3].ToString("0.00"))</td>
+        </tr>
+        <tr>
+            <td>Velocidade</td>
+            <td>@(VetorDeCriterios[1, 0].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[1, 1].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[1, 2].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[1, 3].ToString("0.00"))</td>
+        </tr>
+        <tr>
+            <td>Força</td>
+            <td>@(VetorDeCriterios[2, 0].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[2, 1].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[2, 2].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[2, 3].ToString("0.00"))</td>
+        </tr>
+        <tr>
+            <td>Prazo</td>
+            <td>@(VetorDeCriterios[3, 0].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[3, 1].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[3, 2].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[3, 3].ToString("0.00"))</td>
+        </tr>
+        <tr>
+            <td><strong>Total Coluna</strong></td>
+            <td>@(VetorDeCriterios[4, 0].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[4, 1].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[4, 2].ToString("0.00"))</td>
+            <td>@(VetorDeCriterios[4, 3].ToString("0.00"))</td>
+        </tr>
+    </tbody>
+</table>
 
+<!-- Tabela de Valores Normalizados -->
+<h2 class="mt-5">Matriz Normalizada dos Critérios</h2>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Critério</th>
+            <th>Preço</th>
+            <th>Velocidade</th>
+            <th>Força</th>
+            <th>Prazo</th>
+            <th>Peso Médio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Preço</td>
+            <td>@(MatrizNormalizada[0, 0].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[0, 1].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[0, 2].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[0, 3].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[0, 4].ToString("0.00"))</td>
+        </tr>
+        <tr>
+            <td>Velocidade</td>
+            <td>@(MatrizNormalizada[1, 0].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[1, 1].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[1, 2].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[1, 3].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[1, 4].ToString("0.00"))</td>
+        </tr>
+        <tr>
+            <td>Força</td>
+            <td>@(MatrizNormalizada[2, 0].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[2, 1].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[2, 2].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[2, 3].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[2, 4].ToString("0.00"))</td>
+        </tr>
+        <tr>
+            <td>Prazo</td>
+            <td>@(MatrizNormalizada[3, 0].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[3, 1].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[3, 2].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[3, 3].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[3, 4].ToString("0.00"))</td>
+        </tr>
+    </tbody>
+</table>
 <div class="d-flex justify-content-center align-items-center mt-5">
-    <RadzenButton Variant="Variant.Flat" Click="@atualizar" Text="Calcular melhor motor" ButtonStyle="ButtonStyle.Success" />
+    <RadzenButton Variant="Variant.Flat" Click="@atualizar" Text="Atualizar Tudo" ButtonStyle="ButtonStyle.Success" />
 </div>
 
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <RadzenButton Variant="Variant.Flat" Click="@AtualizarVetorDeCriterios" Text="Atualizar Critérios" ButtonStyle="ButtonStyle.Success" />
+</div>
 
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <RadzenButton Variant="Variant.Flat" Click="@CalcularPesos" Text="Calcular melhor motor" ButtonStyle="ButtonStyle.Success" />
+</div>
 
-<h2 class="mt-5">Melhor Motor</h2>
-@if (firstRender && !motoresFiltrados.Any())
-{
-    <p>Nenhum motor encontrado</p>
-}
-else
-{
-    <table class="table table-bordered mt-3">
-        <thead>
+<h2 class="mt-5">Pontuação dos Motores por Critério</h2>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Motor</th>
+            <th>Preço</th>
+            <th>Velocidade</th>
+            <th>Força</th>
+            <th>Prazo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var motor in motoresFiltrados)
+        {
             <tr>
-                <th>Motor</th>
-                <th>Pontuação Total</th>
+                <td>@motor.PartNumber</td>
+                <td>@motor.Valor</td>
+                <td>@motor.RpmMaximo</td>
+                <td>@motor.ForcaMaxima</td>
+                <td>@motor.Prazo</td>
+                
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var motor in MotoresComPontuacao)
-            {
-                <tr>
-                    <td>@motor.PartNumber</td>
-                    <td>@motor.Pontuacao</td>
-
-                </tr>
-            }
-        </tbody>
+        }
+    </tbody>
     </table>
-}
+<h2 class="mt-5">Pontuacao Total</h2>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Motor</th>
+            <th>Pontuação Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var motor in MotoresComPontuacao)
+        {
+            <tr>
+                <td>@motor.PartNumber</td>
+                <td>@motor.Pontuacao</td>
 
+            </tr>
+        }
+    </tbody>
+</table>
 
 @code {
     int preco = 1;
     int velocidade = 1;
     int forca = 1;
     int prazo = 1;
-    bool firstRender = false;
 
-    decimal massa = 1M;
-    decimal distancia = 5;
+    decimal massa = 1.8M;
+    decimal distancia = 8;
     decimal valorForcaDesejada = 0;
-
-    decimal comprimentoHasteCm = 1; // Comprimento da haste (em cm)
-    decimal massaGramas = 1; // Massa (em gramas)
-    decimal torqueNecessario = 0; // Torque calculado (em Nm)
-    decimal gravidade = 9.81m; // Constante da gravidade
     List<Motor> motoresFiltrados = new List<Motor>();
     List<Motor> MotoresComPontuacao = new List<Motor>();
     List<Motor> motores = new List<Motor>();
@@ -146,29 +260,13 @@ else
     protected override async Task OnInitializedAsync()
     {
         motores = await context.Motores.ToListAsync();
-         
-        
     }
-    decimal CalcularTorque(decimal comprimentoCm, decimal massaGramas)
-    {
-        // Conversão para metros e quilogramas
-        decimal comprimentoMetros = comprimentoCm / 100m; // cm para metros
-        decimal massaKg = massaGramas / 1000m; // gramas para quilogramas
 
-        // Fórmula: Torque = Massa * Gravidade * Comprimento
-        return massaKg * gravidade * comprimentoMetros;
-    }
-    void AtualizarTorque()
-    {
-        torqueNecessario = CalcularTorque(comprimentoHasteCm, massaGramas);
-    }
     void atualizar()
     {
-        AtualizarTorque();
-        firstRender = true;
-        calcularMassa();
         AtualizarVetorDeCriterios();
-        CalcularPesos();
+        CalcularMatrizNormalizada();
+        CalcularPesoMedio();
         CalcularPontuacao();
     }
     void calcularMassa()

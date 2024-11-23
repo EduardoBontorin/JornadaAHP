@@ -22,4 +22,10 @@
     <PackageReference Include="Radzen.Blazor" Version="5.2.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Components\Pages\Home - Cópia.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
 </Project>
