@@ -7,15 +7,7 @@
 <h1 class="align-content-center">Critérios</h1>
 
 <!-- Campo para inserir o valor da força desejada -->
-<div class="mb-3">
-    @* <RadzenLabel @onchange="calcularMassa()" Text="Comprimento da Haste" /> *@
-    <RadzenNumeric @bind-Value="distancia" Min="0" />
-    <RadzenLabel Text="Valor da massa" />
-    <RadzenNumeric @bind-Value="massa" Min="0" />
-</div><div class="mb-3">
-    <RadzenLabel Text="Valor da massa" />
-    <RadzenNumeric Disabled="true" @bind-Value="valorForcaDesejada" Min="0" />
-</div>
+
 
 <!-- Critérios de avaliação -->
 <RadzenRow class="mb-2" Gap="1rem">
@@ -165,6 +157,46 @@
             <td>@(MatrizNormalizada[1, 2].ToString("0.00"))</td>
             <td>@(MatrizNormalizada[1, 3].ToString("0.00"))</td>
             <td>@(MatrizNormalizada[1, 4].ToString("0.00"))</td>
+        </tr>
+        <tr>
+            <td>Força</td>
+            <td>@(MatrizNormalizada[2, 0].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[2, 1].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[2, 2].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[2, 3].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[2, 4].ToString("0.00"))</td>
+        </tr>
+        <tr>
+            <td>Prazo</td>
+            <td>@(MatrizNormalizada[3, 0].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[3, 1].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[3, 2].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[3, 3].ToString("0.00"))</td>
+            <td>@(MatrizNormalizada[3, 4].ToString("0.00"))</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Critério</th>
+            <th>Preço</th>
+            <th>Velocidade</th>
+            <th>Força</th>
+            <th>Prazo</th>
+            <th>Peso Médio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Preço</td>
+            <td>@(MatrizNormalizada[0, 4].ToString("0.00"))</td>
+            
+        </tr>
+        <tr>
+            <td>Velocidade</td>
+            <td>@(MatrizNormalizada[1, 4].ToString("0.00"))</td>
+           
         </tr>
         <tr>
             <td>Força</td>

@@ -112,8 +112,7 @@ else
             {
                 <tr>
                     <td>@motor.PartNumber</td>
-                    <td>@motor.Pontuacao</td>
-
+                    <td>@motor.Pontuacao.ToString("F2")</td>  <!-- Formata para 2 casas decimais -->
                 </tr>
             }
         </tbody>
@@ -149,14 +148,22 @@ else
          
         
     }
-    decimal CalcularTorque(decimal comprimentoCm, decimal massaGramas)
+    decimal CalcularTorque(decimal comprimentoCm, decimal massaGramas, int numeroMotores = 3, decimal eficiencia = 0.7m)
     {
+        // Definir gravidade padrão
+        const decimal gravidade = 9.81m; // Aceleração da gravidade em m/s²
+
         // Conversão para metros e quilogramas
         decimal comprimentoMetros = comprimentoCm / 100m; // cm para metros
         decimal massaKg = massaGramas / 1000m; // gramas para quilogramas
 
-        // Fórmula: Torque = Massa * Gravidade * Comprimento
-        return massaKg * gravidade * comprimentoMetros;
+        // Torque necessário para levantar a carga (sem considerar eficiência e distribuição por motores)
+        decimal torqueBruto = massaKg * gravidade * comprimentoMetros;
+
+        // Ajuste do torque para eficiência e distribuição entre motores
+        decimal torqueNecessario = (torqueBruto / numeroMotores) / eficiencia;
+
+        return torqueNecessario;
     }
     void AtualizarTorque()
     {
