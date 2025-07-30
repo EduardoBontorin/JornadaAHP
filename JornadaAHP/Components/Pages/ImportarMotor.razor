@@ -13,7 +13,8 @@
 
 <RadzenCard Variant="Variant.Outlined">
     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Enviar Arquivo BD</RadzenText>
-    <RadzenUpload Change="@(async (args) => await OnUploadChange(args))" ChooseText="Enviar Motores" Style="width: 100%" InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Enviar Arquivo" }})">
+    <RadzenUpload Change="@(async (args) => await OnUploadChange(args))" ChooseText="Enviar Motores" Style="width: 100%" 
+        InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Enviar Arquivo" }})">
     </RadzenUpload>
 </RadzenCard>
 <style>

@@ -141,3 +141,7 @@ C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\OfficeOpenXml.Core.ExcelPackage.dl
 C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\System.IO.Packaging.dll
 C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
 C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+C:\dev\JornadaAHP\JornadaAHP\bin\Debug\net8.0\JornadaAHP.staticwebassets.endpoints.json
+C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\staticwebassets\msbuild.JornadaAHP.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\dev\JornadaAHP\JornadaAHP\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

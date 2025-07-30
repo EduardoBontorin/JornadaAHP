@@ -2,11 +2,13 @@ using JornadaAHP.Components;
 using JornadaAHP.Data;
 using JornadaAHP.Services;
 using Microsoft.EntityFrameworkCore;
+using Radzen;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddRadzenComponents();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddTransient<ExcelReaderService>();

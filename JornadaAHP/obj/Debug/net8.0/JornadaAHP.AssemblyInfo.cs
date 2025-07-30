@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JornadaAHP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bdd50563e2a13f14dd9c310c70ee97807befe9c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08ff2bfc5a8ac91f6ac5cfc7180b39718768f6d2")]
 [assembly: System.Reflection.AssemblyProductAttribute("JornadaAHP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JornadaAHP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
